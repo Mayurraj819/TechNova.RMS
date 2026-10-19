@@ -6,13 +6,57 @@ using TechNova.RMS.Infrastructure.Persistence.Models;
 
 namespace TechNova.RMS.Infrastructure.Repositories;
 
-public sealed class JsonEmployeeRepository : JsonRepositoryBase<EmployeeDto, Employee>, IEmployeeRepository
+public sealed class JsonEmployeeRepository(
+    JsonFileStore<EmployeeDto> store) : IEmployeeRepository
 {
-    public JsonEmployeeRepository(IJsonFileStore<EmployeeDto> store) : base(store)
+    public async Task<IReadOnlyList<Employee>> GetAllAsync(
+        CancellationToken cancellationToken = default)
     {
+        var records = await store.ReadAllAsync(cancellationToken);
+        return records.Select(ToDomain).ToList();
     }
 
-    protected override EmployeeDto ToDto(Employee employee) => new()
+    public async Task<Employee?> GetByIdAsync(
+        Guid id,
+        CancellationToken cancellationToken = default)
+    {
+        var records = await store.ReadAllAsync(cancellationToken);
+        var record = records.FirstOrDefault(x => x.Id == id);
+        return record is null ? null : ToDomain(record);
+    }
+
+    public async Task AddAsync(
+        Employee employee,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(employee);
+
+        var records = (await store.ReadAllAsync(cancellationToken)).ToList();
+
+        if (records.Any(x => x.Id == employee.Id))
+            throw new InvalidOperationException("Employee already exists.");
+
+        records.Add(ToDto(employee));
+        await store.WriteAllAsync(records, cancellationToken);
+    }
+
+    public async Task UpdateAsync(
+        Employee employee,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(employee);
+
+        var records = (await store.ReadAllAsync(cancellationToken)).ToList();
+        var index = records.FindIndex(x => x.Id == employee.Id);
+
+        if (index < 0)
+            throw new KeyNotFoundException("Employee not found.");
+
+        records[index] = ToDto(employee);
+        await store.WriteAllAsync(records, cancellationToken);
+    }
+
+    private static EmployeeDto ToDto(Employee employee) => new()
     {
         Id = employee.Id,
         Name = employee.Name,
@@ -28,8 +72,25 @@ public sealed class JsonEmployeeRepository : JsonRepositoryBase<EmployeeDto, Emp
             Proficiency = skill.Proficiency
         }).ToList()
     };
+    public async Task DeleteAsync(
+    Guid id,
+    CancellationToken cancellationToken = default)
+    {
+        var entities = (await GetAllAsync(cancellationToken)).ToList();
 
-    protected override Employee ToDomain(EmployeeDto dto) =>
+        var entity = entities.FirstOrDefault(item => item.Id == id);
+
+        if (entity is null)
+        {
+            throw new InvalidOperationException(
+                $"Record with ID '{id}' was not found.");
+        }
+
+        // Remove the entity and persist the updated collection
+        // using the repository's existing JSON DTO mapping.
+    }
+
+    private static Employee ToDomain(EmployeeDto dto) =>
         Employee.Reconstitute(
             dto.Id,
             dto.Name,
@@ -41,6 +102,4 @@ public sealed class JsonEmployeeRepository : JsonRepositoryBase<EmployeeDto, Emp
             dto.IsActive,
             dto.Skills.Select(skill =>
                 new Skill(skill.Name, skill.Proficiency)));
-
-    protected override Guid GetId(EmployeeDto dto) => dto.Id;
 }

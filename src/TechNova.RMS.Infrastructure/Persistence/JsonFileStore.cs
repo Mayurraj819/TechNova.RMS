@@ -26,12 +26,12 @@ public sealed class JsonFileStore<T> : IJsonFileStore<T>
         try
         {
             if (!File.Exists(_filePath))
-                return new List<T>();
+                return [];
 
             await using var stream = File.OpenRead(_filePath);
 
             return await JsonSerializer.DeserializeAsync<List<T>>(
-                stream, _options, cancellationToken) ?? new List<T>();
+                stream, _options, cancellationToken) ?? [];
         }
         finally
         {

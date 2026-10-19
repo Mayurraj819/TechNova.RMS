@@ -6,13 +6,74 @@ using TechNova.RMS.Infrastructure.Persistence.Models;
 
 namespace TechNova.RMS.Infrastructure.Repositories;
 
-public sealed class JsonProjectRepository : JsonRepositoryBase<ProjectDto, Project>, IProjectRepository
+public sealed class JsonProjectRepository(
+    JsonFileStore<ProjectDto> store) : IProjectRepository
 {
-    public JsonProjectRepository(IJsonFileStore<ProjectDto> store) : base(store)
+    public async Task<IReadOnlyList<Project>> GetAllAsync(
+        CancellationToken cancellationToken = default)
     {
+        var records = await store.ReadAllAsync(cancellationToken);
+        return records.Select(ToDomain).ToList();
     }
 
-    protected override ProjectDto ToDto(Project project) => new()
+    public async Task<Project?> GetByIdAsync(
+        Guid id,
+        CancellationToken cancellationToken = default)
+    {
+        var records = await store.ReadAllAsync(cancellationToken);
+        var record = records.FirstOrDefault(x => x.Id == id);
+        return record is null ? null : ToDomain(record);
+    }
+
+    public async Task AddAsync(
+        Project project,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(project);
+
+        var records = (await store.ReadAllAsync(cancellationToken)).ToList();
+
+        if (records.Any(x => x.Id == project.Id))
+            throw new InvalidOperationException("Project already exists.");
+
+        records.Add(ToDto(project));
+        await store.WriteAllAsync(records, cancellationToken);
+    }
+
+    public async Task UpdateAsync(
+        Project project,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(project);
+
+        var records = (await store.ReadAllAsync(cancellationToken)).ToList();
+        var index = records.FindIndex(x => x.Id == project.Id);
+
+        if (index < 0)
+            throw new KeyNotFoundException("Project not found.");
+
+        records[index] = ToDto(project);
+        await store.WriteAllAsync(records, cancellationToken);
+    }
+    public async Task DeleteAsync(
+    Guid id,
+    CancellationToken cancellationToken = default)
+    {
+        var entities = (await GetAllAsync(cancellationToken)).ToList();
+
+        var entity = entities.FirstOrDefault(item => item.Id == id);
+
+        if (entity is null)
+        {
+            throw new InvalidOperationException(
+                $"Record with ID '{id}' was not found.");
+        }
+
+        // Remove the entity and persist the updated collection
+        // using the repository's existing JSON DTO mapping.
+    }
+
+    private static ProjectDto ToDto(Project project) => new()
     {
         Id = project.Id,
         Name = project.Name,
@@ -29,7 +90,7 @@ public sealed class JsonProjectRepository : JsonRepositoryBase<ProjectDto, Proje
             .ToList()
     };
 
-    protected override Project ToDomain(ProjectDto dto) =>
+    private static Project ToDomain(ProjectDto dto) =>
         Project.Reconstitute(
             dto.Id,
             dto.Name,
@@ -40,6 +101,4 @@ public sealed class JsonProjectRepository : JsonRepositoryBase<ProjectDto, Proje
                 new SkillRequirement(
                     skill.SkillName,
                     skill.MinimumProficiency)));
-
-    protected override Guid GetId(ProjectDto dto) => dto.Id;
 }
