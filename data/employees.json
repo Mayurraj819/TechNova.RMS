@@ -1,0 +1,349 @@
+[
+  {
+    "Id": "11111111-1111-4111-8111-111111111111",
+    "Name": "Aarav Sharma",
+    "Email": "aarav@technova.com",
+    "Designation": "Senior Developer",
+    "Department": "Development",
+    "EmploymentType": 0,
+    "CostRate": 500,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "C#",
+        "Proficiency": 5
+      },
+      {
+        "Name": ".NET",
+        "Proficiency": 5
+      },
+      {
+        "Name": "SQL",
+        "Proficiency": 4
+      }
+    ]
+  },
+  {
+    "Id": "22222222-2222-4222-8222-222222222222",
+    "Name": "Priya Patel",
+    "Email": "priya@technova.com",
+    "Designation": "Developer",
+    "Department": "Development",
+    "EmploymentType": 0,
+    "CostRate": 400,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "C#",
+        "Proficiency": 4
+      },
+      {
+        "Name": ".NET",
+        "Proficiency": 4
+      },
+      {
+        "Name": "SQL",
+        "Proficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "33333333-3333-4333-8333-333333333333",
+    "Name": "Rohan Verma",
+    "Email": "rohan@technova.com",
+    "Designation": "Frontend Developer",
+    "Department": "Development",
+    "EmploymentType": 0,
+    "CostRate": 380,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Angular",
+        "Proficiency": 4
+      },
+      {
+        "Name": "TypeScript",
+        "Proficiency": 4
+      },
+      {
+        "Name": "HTML",
+        "Proficiency": 5
+      }
+    ]
+  },
+  {
+    "Id": "44444444-4444-4444-8444-444444444444",
+    "Name": "Ananya Singh",
+    "Email": "ananya@technova.com",
+    "Designation": "QA Engineer",
+    "Department": "QA",
+    "EmploymentType": 0,
+    "CostRate": 350,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Testing",
+        "Proficiency": 5
+      },
+      {
+        "Name": "Selenium",
+        "Proficiency": 4
+      },
+      {
+        "Name": "API Testing",
+        "Proficiency": 4
+      }
+    ]
+  },
+  {
+    "Id": "55555555-5555-4555-8555-555555555555",
+    "Name": "Vikram Rao",
+    "Email": "vikram@technova.com",
+    "Designation": "QA Engineer",
+    "Department": "QA",
+    "EmploymentType": 1,
+    "CostRate": 300,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Selenium",
+        "Proficiency": 4
+      },
+      {
+        "Name": "Testing",
+        "Proficiency": 4
+      }
+    ]
+  },
+  {
+    "Id": "66666666-6666-4666-8666-666666666666",
+    "Name": "Neha Gupta",
+    "Email": "neha@technova.com",
+    "Designation": "DevOps Engineer",
+    "Department": "DevOps",
+    "EmploymentType": 0,
+    "CostRate": 450,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Azure",
+        "Proficiency": 5
+      },
+      {
+        "Name": "CI/CD",
+        "Proficiency": 4
+      },
+      {
+        "Name": "Docker",
+        "Proficiency": 4
+      }
+    ]
+  },
+  {
+    "Id": "77777777-7777-4777-8777-777777777777",
+    "Name": "Arjun Mehta",
+    "Email": "arjun@technova.com",
+    "Designation": "DevOps Engineer",
+    "Department": "DevOps",
+    "EmploymentType": 1,
+    "CostRate": 380,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Docker",
+        "Proficiency": 4
+      },
+      {
+        "Name": "Kubernetes",
+        "Proficiency": 3
+      },
+      {
+        "Name": "Azure",
+        "Proficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "88888888-8888-4888-8888-888888888888",
+    "Name": "Kavya Nair",
+    "Email": "kavya@technova.com",
+    "Designation": "Data Engineer",
+    "Department": "Data",
+    "EmploymentType": 0,
+    "CostRate": 460,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "SQL",
+        "Proficiency": 5
+      },
+      {
+        "Name": "ETL",
+        "Proficiency": 4
+      },
+      {
+        "Name": "Python",
+        "Proficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "99999999-9999-4999-8999-999999999999",
+    "Name": "Ishaan Joshi",
+    "Email": "ishaan@technova.com",
+    "Designation": "Data Analyst",
+    "Department": "Data",
+    "EmploymentType": 0,
+    "CostRate": 350,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Python",
+        "Proficiency": 4
+      },
+      {
+        "Name": "SQL",
+        "Proficiency": 4
+      },
+      {
+        "Name": "Power BI",
+        "Proficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "Name": "Meera Iyer",
+    "Email": "meera@technova.com",
+    "Designation": "UI Developer",
+    "Department": "UI",
+    "EmploymentType": 0,
+    "CostRate": 420,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Angular",
+        "Proficiency": 5
+      },
+      {
+        "Name": "TypeScript",
+        "Proficiency": 5
+      },
+      {
+        "Name": "CSS",
+        "Proficiency": 4
+      }
+    ]
+  },
+  {
+    "Id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "Name": "Aditya Kulkarni",
+    "Email": "aditya@technova.com",
+    "Designation": "Developer",
+    "Department": "Development",
+    "EmploymentType": 0,
+    "CostRate": 320,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "C#",
+        "Proficiency": 3
+      },
+      {
+        "Name": ".NET",
+        "Proficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+    "Name": "Sana Khan",
+    "Email": "sana@technova.com",
+    "Designation": "QA Engineer",
+    "Department": "QA",
+    "EmploymentType": 0,
+    "CostRate": 310,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Testing",
+        "Proficiency": 3
+      },
+      {
+        "Name": "API Testing",
+        "Proficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+    "Name": "Rahul Das",
+    "Email": "rahul@technova.com",
+    "Designation": "Database Developer",
+    "Department": "Development",
+    "EmploymentType": 0,
+    "CostRate": 390,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "SQL",
+        "Proficiency": 4
+      },
+      {
+        "Name": "C#",
+        "Proficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+    "Name": "Pooja Desai",
+    "Email": "pooja@technova.com",
+    "Designation": "UI Developer",
+    "Department": "UI",
+    "EmploymentType": 0,
+    "CostRate": 330,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "Angular",
+        "Proficiency": 3
+      },
+      {
+        "Name": "CSS",
+        "Proficiency": 4
+      }
+    ]
+  },
+  {
+    "Id": "ffffffff-ffff-4fff-8fff-ffffffffffff",
+    "Name": "Karan Malhotra",
+    "Email": "karan@technova.com",
+    "Designation": "Intern Developer",
+    "Department": "Development",
+    "EmploymentType": 2,
+    "CostRate": 150,
+    "IsActive": true,
+    "Skills": [
+      {
+        "Name": "C#",
+        "Proficiency": 2
+      },
+      {
+        "Name": "SQL",
+        "Proficiency": 2
+      }
+    ]
+  },
+  {
+    "Id": "a6f6b3dc-12f8-46d1-9c62-91b7d5ff1fde",
+    "Name": "Mayursingh Tundale",
+    "Email": "Mayurrajput@gmail.com",
+    "Designation": "Software Devloper",
+    "Department": "Devlopement",
+    "EmploymentType": 2,
+    "CostRate": 500,
+    "IsActive": true,
+    "Skills": []
+  }
+]

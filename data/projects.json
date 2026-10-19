@@ -1,0 +1,92 @@
+[
+  {
+    "Id": "10000001-0000-4000-8000-000000000001",
+    "Name": "Customer Portal",
+    "Client": "Contoso Ltd",
+    "StartDate": "2026-09-01",
+    "EndDate": "2027-03-31",
+    "Status": 1,
+    "RequiredSkills": [
+      {
+        "SkillName": "Angular",
+        "MinimumProficiency": 3
+      },
+      {
+        "SkillName": "C#",
+        "MinimumProficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "10000002-0000-4000-8000-000000000002",
+    "Name": "HR Management System",
+    "Client": "Fabrikam Inc",
+    "StartDate": "2026-09-15",
+    "EndDate": "2027-04-30",
+    "Status": 1,
+    "RequiredSkills": [
+      {
+        "SkillName": "C#",
+        "MinimumProficiency": 3
+      },
+      {
+        "SkillName": "SQL",
+        "MinimumProficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "10000003-0000-4000-8000-000000000003",
+    "Name": "Cloud Migration",
+    "Client": "Northwind",
+    "StartDate": "2026-10-01",
+    "EndDate": "2027-02-28",
+    "Status": 1,
+    "RequiredSkills": [
+      {
+        "SkillName": "Azure",
+        "MinimumProficiency": 3
+      },
+      {
+        "SkillName": "Docker",
+        "MinimumProficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "10000004-0000-4000-8000-000000000004",
+    "Name": "Analytics Platform",
+    "Client": "Adventure Works",
+    "StartDate": "2026-09-01",
+    "EndDate": "2027-05-31",
+    "Status": 1,
+    "RequiredSkills": [
+      {
+        "SkillName": "SQL",
+        "MinimumProficiency": 4
+      },
+      {
+        "SkillName": "Python",
+        "MinimumProficiency": 3
+      }
+    ]
+  },
+  {
+    "Id": "10000005-0000-4000-8000-000000000005",
+    "Name": "Automation Suite",
+    "Client": "Tailspin Toys",
+    "StartDate": "2026-10-01",
+    "EndDate": "2027-03-31",
+    "Status": 1,
+    "RequiredSkills": [
+      {
+        "SkillName": "Testing",
+        "MinimumProficiency": 3
+      },
+      {
+        "SkillName": "Selenium",
+        "MinimumProficiency": 3
+      }
+    ]
+  }
+]

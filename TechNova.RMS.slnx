@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/data/">
+    <File Path="allocations.json" />
+    <File Path="employees.json" />
+    <File Path="projects.json" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/TechNova.RMS.Application/TechNova.RMS.Application.csproj" />
+    <Project Path="src/TechNova.RMS.Console/TechNova.RMS.Console.csproj" />
+    <Project Path="src/TechNova.RMS.Domain/TechNova.RMS.Domain.csproj" />
+    <Project Path="src/TechNova.RMS.Infrastructure/TechNova.RMS.Infrastructure.csproj" />
+  </Folder>
+</Solution>
