@@ -9,5 +9,6 @@
     <Project Path="src/TechNova.RMS.Console/TechNova.RMS.Console.csproj" />
     <Project Path="src/TechNova.RMS.Domain/TechNova.RMS.Domain.csproj" />
     <Project Path="src/TechNova.RMS.Infrastructure/TechNova.RMS.Infrastructure.csproj" />
+    <Project Path="TechNova.RMS.Tests/TechNova.RMS.Tests.csproj" Id="015bb271-bd10-4e42-ad6f-85e43c58a49a" />
   </Folder>
 </Solution>

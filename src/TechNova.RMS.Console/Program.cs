@@ -19,15 +19,15 @@ Directory.CreateDirectory(dataDirectory);
 
 Console.WriteLine($"JSON data folder: {dataDirectory}");
 
-services.AddSingleton(
+services.AddSingleton<IJsonFileStore<EmployeeDto>>(
     new JsonFileStore<EmployeeDto>(
         Path.Combine(dataDirectory, "employees.json")));
 
-services.AddSingleton(
+services.AddSingleton<IJsonFileStore<ProjectDto>>(
     new JsonFileStore<ProjectDto>(
         Path.Combine(dataDirectory, "projects.json")));
 
-services.AddSingleton(
+services.AddSingleton<IJsonFileStore<AllocationDto>>(
     new JsonFileStore<AllocationDto>(
         Path.Combine(dataDirectory, "allocations.json")));
 

@@ -7,7 +7,7 @@ using TechNova.RMS.Infrastructure.Persistence.Models;
 namespace TechNova.RMS.Infrastructure.Repositories;
 
 public sealed class JsonEmployeeRepository(
-    JsonFileStore<EmployeeDto> store) : IEmployeeRepository
+    IJsonFileStore<EmployeeDto> store) : IEmployeeRepository
 {
     public async Task<IReadOnlyList<Employee>> GetAllAsync(
         CancellationToken cancellationToken = default)
@@ -73,21 +73,20 @@ public sealed class JsonEmployeeRepository(
         }).ToList()
     };
     public async Task DeleteAsync(
-    Guid id,
-    CancellationToken cancellationToken = default)
+        Guid id,
+        CancellationToken cancellationToken = default)
     {
-        var entities = (await GetAllAsync(cancellationToken)).ToList();
+        var records = (await store.ReadAllAsync(cancellationToken)).ToList();
+        var index = records.FindIndex(item => item.Id == id);
 
-        var entity = entities.FirstOrDefault(item => item.Id == id);
-
-        if (entity is null)
+        if (index < 0)
         {
             throw new InvalidOperationException(
                 $"Record with ID '{id}' was not found.");
         }
 
-        // Remove the entity and persist the updated collection
-        // using the repository's existing JSON DTO mapping.
+        records.RemoveAt(index);
+        await store.WriteAllAsync(records, cancellationToken);
     }
 
     private static Employee ToDomain(EmployeeDto dto) =>

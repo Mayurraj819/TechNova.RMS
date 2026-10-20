@@ -7,7 +7,7 @@ using TechNova.RMS.Infrastructure.Persistence.Models;
 namespace TechNova.RMS.Infrastructure.Repositories;
 
 public sealed class JsonProjectRepository(
-    JsonFileStore<ProjectDto> store) : IProjectRepository
+    IJsonFileStore<ProjectDto> store) : IProjectRepository
 {
     public async Task<IReadOnlyList<Project>> GetAllAsync(
         CancellationToken cancellationToken = default)
@@ -56,21 +56,20 @@ public sealed class JsonProjectRepository(
         await store.WriteAllAsync(records, cancellationToken);
     }
     public async Task DeleteAsync(
-    Guid id,
-    CancellationToken cancellationToken = default)
+        Guid id,
+        CancellationToken cancellationToken = default)
     {
-        var entities = (await GetAllAsync(cancellationToken)).ToList();
+        var records = (await store.ReadAllAsync(cancellationToken)).ToList();
+        var index = records.FindIndex(item => item.Id == id);
 
-        var entity = entities.FirstOrDefault(item => item.Id == id);
-
-        if (entity is null)
+        if (index < 0)
         {
             throw new InvalidOperationException(
                 $"Record with ID '{id}' was not found.");
         }
 
-        // Remove the entity and persist the updated collection
-        // using the repository's existing JSON DTO mapping.
+        records.RemoveAt(index);
+        await store.WriteAllAsync(records, cancellationToken);
     }
 
     private static ProjectDto ToDto(Project project) => new()
